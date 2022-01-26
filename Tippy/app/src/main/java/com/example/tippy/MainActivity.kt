@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         tvTipPercentLabel = findViewById(R.id.tvTipPercentLabel)
         tvTipAmount = findViewById(R.id.tVTipAmount)
         tvTotalAmount = findViewById(R.id.tvTotalAmount)
+        tvTipDescription = findViewById(R.id.tvTipDescription)
 
         seekBarTip.progress = INITIAL_TIP_PERCENT
         tvTipPercentLabel.text = "$INITIAL_TIP_PERCENT %"
@@ -50,13 +51,9 @@ class MainActivity : AppCompatActivity() {
         })
 
         etBaseAmount.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("Not yet implemented")
-            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("Not yet implemented")
-            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun afterTextChanged(p0: Editable?) {
                 Log.i(TAG, "afterTextChanged $p0")
@@ -99,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         val tipPercent = seekBarTip.progress
 
         // 2. Compute the tip and total
-        val tipAmount = baseAmount * (tipPercent / 100)
+        val tipAmount = baseAmount * tipPercent / 100
         val totalAmount = baseAmount + tipAmount
 
         // 3. Update the UI
